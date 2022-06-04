@@ -1,0 +1,29 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width">
+  </head>
+  <body style="background-color: #323639;
+text-align:center">
+    <iframe  id="bil" src="" frameborder="0" style="min-height:180vh;width:100%">
+</iframe>
+
+   <script>
+
+    /*console.log("lol");*/
+  var url_string = window.location.href; //window.location.href
+  var url = new URL(url_string);
+  var c = url.searchParams.get("key");
+    var element =  document.getElementById("bil");
+    var final_url = "https://docs.google.com/viewerng/viewer?url=https://sihati-test.000webhostapp.com/"+c+".pdf&embedded=true"
+    element.setAttribute("src", final_url);
+   </script>
+  </body>
+
+
+
+
+</html>
