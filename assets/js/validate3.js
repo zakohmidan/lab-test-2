@@ -35,7 +35,7 @@
         var x = document.getElementById("id_pa").value;
         var y = document.getElementById("key").value;
         var key_fram = x + "_" + y
-        var full_url = 'http://sihati-test.000webhostapp.com/' + x + "_" + y + ".pdf";
+        var full_url = 'https://sihati-test.000webhostapp.com/' + x + "_" + y + ".pdf";
         thisForm.querySelector('.loading').classList.add('d-block');
         fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(full_url)}`)
             .then(response => {
