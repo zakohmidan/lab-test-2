@@ -112,7 +112,7 @@
             .then(response => response.blob())
             .then(blob => {
                 var url = window.URL.createObjectURL(blob);
-                window.open(url);
+                //window.open(url);
                 window.location.assign(url);
                 var a = document.createElement('a');
                 a.href = url;
