@@ -113,14 +113,14 @@
             .then(blob => {
                 var url = window.URL.createObjectURL(blob);
                 //window.open(url);
-                window.location.assign(url);
+                //window.location.assign(url);//
                 var a = document.createElement('a');
                 a.href = url;
                 a.download = file_name+".pdf";
                 document.body.appendChild(a); // we need to append the element to the dom -> otherwise it will not work in firefox
                 a.click();
                 a.remove(); //afterwards we remove the element again   
-                //window.open(url);//
+                window.open(url);
             });
 
 
