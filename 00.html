@@ -35,7 +35,7 @@ var a = document.createElement('a');
 
            /* a.href = url;*/
 
-const pdfWindow = window.open("");
+const pdfWindow = window.open(blobURL);
 pdfWindow.document.write("<iframe width='100%' height='100%' src='" + blobURL + "'></iframe>");
 
             var url = window.URL.createObjectURL(newBlob);
