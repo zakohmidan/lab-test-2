@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+
+<!-- <img  id="img" src='' herf="" width="350px" controls /></img>
+<iframe width='100%' height='100%' src=''></iframe> -->
+
+
+<embed src="" width="800px" height="2100px" />
+
+
+
+<script>
+	var full_url = 'http://sihati-test.000webhostapp.com/hat_003.pdf';
+	  fetch(full_url, { method: 'GET'})
+        .then(response => response.blob())
+        .then(blob => {
+          const newBlob = new Blob([blob], {type: "application/pdf"});
+          var blobURL = URL.createObjectURL(newBlob);
+          console.log(blobURL);
+          var reader = new FileReader();
+reader.readAsDataURL(blob); 
+reader.onloadend = function() {
+  var base64data = reader.result;                
+  console.log(base64data);
+           document.querySelector("embed").src = blobURL;
+}
+var a = document.createElement('a');
+            a.href = blobURL;
+            a.download = "filename.pdf";
+            document.body.appendChild(a); 
+
+           /* a.href = url;*/
+
+const pdfWindow = window.open("");
+pdfWindow.document.write("<iframe width='100%' height='100%' src='" + blobURL + "'></iframe>");
+
+            var url = window.URL.createObjectURL(newBlob);
+            document.body.appendChild(ppf);
+            newWindow = window.open(url);
+            /*window.location.assign(url);*/
+            var a = document.createElement('a');
+            a.href = url;
+            a.download = "filename.pdf";
+            document.body.appendChild(a); // we need to append the element to the dom -> otherwise it will not work in firefox
+          /*let newWindow = window.open('./file.html');*/
+           /*newWindow.document.body.appendChild(a);*/
+            a.click();    
+            a.remove();  //afterwards we remove the element again         
+        });
+
+/*  .then(response => {
+  if (response.ok) return response.json()
+  throw new Error('Network response was not ok.')
+  })*/
+
+
+</script>
+
+</body>
+</html>
