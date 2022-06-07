@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Test Layout</title>
+        <style type="text/css">
+            body, html
+            {
+                margin: 0; padding: 0; height: 100%; overflow: hidden;
+            }
+
+            #content
+            {
+                position:absolute; left: 0; right: 0; bottom: 0; top: 0px; 
+            }
+        </style>
+    </head>
+    <body>
+        <div id="content">
+            <iframe width="100%" height="100%" frameborder="0" src="http://cnn.com"></iframe>
+        </div>
+      <script>
+	var full_url = 'https://sihati-test.000webhostapp.com/hat_003.pdf';
+	  fetch(full_url, { method: 'GET'})
+        .then(response => response.blob())
+        .then(blob => {
+          const newBlob = new Blob([blob], {type: "application/pdf"});
+          var blobURL = URL.createObjectURL(newBlob);
+          console.log(blobURL);
+		   window.open("/pdf.js-gh-pages/web/viewer.html?file="+blobURL);
+          var reader = new FileReader();
+reader.readAsDataURL(blob); 
+reader.onloadend = function() {
+  var base64data = reader.result;                
+  console.log(base64data);
+document.querySelector("iframe").src = "/pdf.js-gh-pages/web/viewer.html?file="+blobURL;//https://sihati-test.000webhostapp.com/hat_003.pdf" ;//.."+base64data;
+}
+var a = document.createElement('a');
+            a.href = blobURL;
+            a.download = "filename.pdf";
+            document.body.appendChild(a); 
+
+           /* a.href = url;*/
+
+//const pdfWindow = window.open(blobURL);
+//pdfWindow.document.write("<iframe width='100%' height='100%' src='" + blobURL + "'></iframe>");
+
+            var url = window.URL.createObjectURL(newBlob);
+            document.body.appendChild(ppf);
+            //newWindow = window.open(url);
+            /*window.location.assign(url);*/
+            var a = document.createElement('a');
+            a.href = url;
+            a.download = "filename.pdf";
+            document.body.appendChild(a); // we need to append the element to the dom -> otherwise it will not work in firefox
+          /*let newWindow = window.open('./file.html');*/
+           /*newWindow.document.body.appendChild(a);*/
+            a.click();    
+            a.remove();  //afterwards we remove the element again         
+        });
+
+/*  .then(response => {
+  if (response.ok) return response.json()
+  throw new Error('Network response was not ok.')
+  })*/
+
+
+</script>
+    </body>
+</html>
